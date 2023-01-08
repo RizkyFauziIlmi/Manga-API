@@ -2,9 +2,13 @@ import { Router } from 'express'
 import komikListModel from "../models/komikListModel.js"
 import komikDetailsModel from "../models/komikDetailsModel.js";
 
-const router = Router()
+const route = Router()
 
-router.get('/all', async (req, res) => {
+route.get('/', (req, res) => {
+    res.send('https://github.com/RizkyFauziIlmi')
+})
+
+route.get('/all', async (req, res) => {
 
     try {
         if (req.query.limit) {
@@ -19,7 +23,7 @@ router.get('/all', async (req, res) => {
     }
 })
 
-router.get('/top-komik', async (req, res) => {
+route.get('/top-komik', async (req, res) => {
 
     try {
         if (req.query.limit) {
@@ -42,7 +46,7 @@ router.get('/top-komik', async (req, res) => {
     }
 })
 
-router.get('/manga', async (req, res) => {
+route.get('/manga', async (req, res) => {
     try {
         if (req.query.limit) {
             const manga = await komikListModel.find({ type: { $eq: "Manga" } }).limit(req.query.limit)
@@ -56,7 +60,7 @@ router.get('/manga', async (req, res) => {
     }
 })
 
-router.get('/manhwa', async (req, res) => {
+route.get('/manhwa', async (req, res) => {
     try {
         if (req.query.limit) {
             const manhwa = await komikListModel.find({ type: { $eq: "Manhwa" } }).limit(req.query.limit)
@@ -70,7 +74,7 @@ router.get('/manhwa', async (req, res) => {
     }
 })
 
-router.get('/manhua', async (req, res) => {
+route.get('/manhua', async (req, res) => {
     try {
         if (req.query.limit) {
             const manhua = await komikListModel.find({ type: { $eq: "Manhua" } }).limit(req.query.limit)
@@ -84,7 +88,7 @@ router.get('/manhua', async (req, res) => {
     }
 })
 
-router.get('/search', async (req, res) => {
+route.get('/search', async (req, res) => {
     try {
         if (req.query.q) {
             const searchedKomik = await komikListModel.find({ title: { $regex: new RegExp(req.query.q, 'i') } }).sort({ score: -1 })
@@ -97,7 +101,7 @@ router.get('/search', async (req, res) => {
     }
 })
 
-router.get('/komik-detail/:endpoint', async (req, res) => {
+route.get('/komik-detail/:endpoint', async (req, res) => {
     const { endpoint } = req.params
 
     try {
@@ -112,4 +116,8 @@ router.get('/komik-detail/:endpoint', async (req, res) => {
     }
 })
 
-export default router
+route.get('*', (req, res) => {
+    res.send('wrong url!')
+})
+
+export default route

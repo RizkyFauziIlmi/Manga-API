@@ -19,7 +19,7 @@ mongoose.connect(DB_CONNECTION, {
 })
 
 app.use(express.json())
-app.use('/api/v1', komikRoute)
+app.use(komikRoute)
 
 
 const db = mongoose.connection

@@ -1,6 +1,15 @@
 {
   "version": 2,
-  "name": "komikindo-api",
-  "builds": [{ "src": "index.js", "use": "@now/node" }],
-  "routes": [{ "src": "/api/v1/(.*)", "dest": "/api/v1/$1" }]
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "index.js"
+    }
+  ]
 }
