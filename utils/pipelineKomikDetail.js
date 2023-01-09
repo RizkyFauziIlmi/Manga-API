@@ -1,4 +1,4 @@
-const makePipelineKomikList = (req, res) => {
+const makePipelineKomikDetail = (req, res) => {
     const pipeline = []
 
     // Tambahkan stage $match untuk mencari dokumen yang sesuai dengan kondisi
@@ -18,10 +18,14 @@ const makePipelineKomikList = (req, res) => {
         })
     }
 
-    if (req.query.warna === "true") {
-        pipeline.push({ $match: { warna: { $eq: true } } });
-    } else if (req.query.warna === "false") {
-        pipeline.push({ $match: { warna: { $eq: false } } });
+    if (req.query.genre) {
+        // split genreQuery menjadi array jika terdapat lebih dari satu genre
+        const genreQuery = req.query.genre.split(',');
+        pipeline.push({
+            $match: {
+                'genre.genre_title': { $all: genreQuery },
+            },
+        });
     }
 
     // Tambahkan stage $sort untuk mengurutkan dokumen sesuai dengan kondisi
@@ -44,4 +48,4 @@ const makePipelineKomikList = (req, res) => {
     return pipeline
 }
 
-export default makePipelineKomikList
+export default makePipelineKomikDetail
