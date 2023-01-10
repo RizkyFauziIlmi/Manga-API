@@ -31,4 +31,4 @@ const komikListSchema = new mongoose.Schema({
     }
 })
 
-export default mongoose.model('komiklist', komikListSchema)
+export default mongoose.model('komiklists', komikListSchema)

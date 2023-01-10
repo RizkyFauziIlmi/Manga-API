@@ -25,6 +25,20 @@ const similarSchema = new mongoose.Schema({
   similar_desc: String
 });
 
+// Buat schema untuk objek di dalam array "info"
+const infoSchema = new mongoose.Schema({
+  "Status":  String,
+  "Pengarang":  String,
+  "Ilustrator":  String,
+  "Grafis":  String,
+  "Tema":  String,
+  "Konten": String,
+  "Official": String,
+  "Jenis Komik":  String,
+  "Retail":  String,
+  "Informasi":  String,
+});
+
 // Buat schema untuk collection komikList
 const komikDetailsSchema = new mongoose.Schema({
   _id: {
@@ -43,7 +57,7 @@ const komikDetailsSchema = new mongoose.Schema({
   score: String,
   scoredBy: String,
   relative: [refSchema],
-  info: [String],
+  info: [infoSchema],
   genre: [genreSchema],
   teaser: [teaserSchema],
   similar: [similarSchema]
