@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 const komikListSchema = new mongoose.Schema({
     _id: {
         type: mongoose.Types.ObjectId,
-        required: true
     },
     title: {
         type: String,

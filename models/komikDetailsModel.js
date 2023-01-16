@@ -43,7 +43,6 @@ const infoSchema = new mongoose.Schema({
 const komikDetailsSchema = new mongoose.Schema({
   _id: {
     type: mongoose.Types.ObjectId,
-    required: true
   },
   title: {
     type: String,
