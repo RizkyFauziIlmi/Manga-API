@@ -1,12 +1,13 @@
 # Komiindo-manga-api
+This repository is an implementation of a RESTful API for manga using Mongoose, MongoDB, and Express technology. The manga data is stored in a MongoDB database and accessed through Mongoose as an ORM (Object Relational Mapper). Then, the API is built using Express as a Node.js framework that allows for the fast and easy creation of web applications. This repository is ideal for developers looking to create a manga application or to learn how to build a RESTful API using MongoDB, Mongoose, and Express technology.
 
-this api use database monggoDB, i use my [own data mining tool]() for the source
+***I use my [own data mining tool]() for the source data***
 
 ## API Reference
 
 ### Visit this [endpoint](https://komikindo-api.vercel.app/komik-detail/tokyo-ghoul) to test the api
 
-* Get Komik List
+- ### Get Komik List
 
 ```http
   GET /komik-list?Parameter1=value&parameter2=value...
@@ -22,7 +23,7 @@ this api use database monggoDB, i use my [own data mining tool]() for the source
 | `limit`   | `integer`| `(any number)`             |
 
 #### response:
-```json
+```javascript
 [{
     _id: String,
     title: String,
@@ -34,7 +35,7 @@ this api use database monggoDB, i use my [own data mining tool]() for the source
 }]
 ```
 
-* Get Komik Detail
+- ### Get Komik Detail
 
 ```http
   GET /komik-detail/${endpoint}
@@ -60,7 +61,7 @@ or
 | `limit`   | `integer`| `(any number)`             |
 
 #### response:
-```json
+```javascript
 [{
   _id: String,
   title: String,
