@@ -1,7 +1,7 @@
 # Komiindo-manga-api
 This repository is an implementation of a RESTful API for manga using Mongoose, MongoDB, and Express technology. The manga data is stored in a MongoDB database and accessed through Mongoose as an ORM (Object Relational Mapper). Then, the API is built using Express as a Node.js framework that allows for the fast and easy creation of web applications. This repository is ideal for developers looking to create a manga application or to learn how to build a RESTful API using MongoDB, Mongoose, and Express technology.
 
-***I use my [own data mining tool]() for the source data***
+***I use my [own data mining tool](https://github.com/RizkyFauziIlmi/Manga-Data-Mining-Terminal) for the source data***
 
 ## API Reference
 
