@@ -10,14 +10,6 @@ const makePipelineKomikDetail = (req, res) => {
         });
     }
 
-    if (req.query.type) {
-        pipeline.push({
-            $match: {
-                type: { $eq: req.query.type }
-            }
-        })
-    }
-
     if (req.query.genre) {
         // split genreQuery menjadi array jika terdapat lebih dari satu genre
         const genreQuery = req.query.genre.split(',');

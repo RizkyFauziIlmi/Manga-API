@@ -2,7 +2,6 @@ import { Router } from 'express'
 import komikListModel from "../models/komikListModel.js"
 import komikDetailsModel from "../models/komikDetailsModel.js";
 import makePipelineKomikList from '../utils/pipelineKomikList.js';
-import path from 'path'
 import makePipelineKomikDetail from '../utils/pipelineKomikDetail.js';
 import komikChaptersModel from '../models/komikChaptersModel.js';
 
@@ -68,26 +67,9 @@ route.get('/komik-chapter/:endpoint?', async (req, res) => {
     res.status(200).json(komikChapter)
 })
 
-route.delete("/filter", async (req, res) => {
-    let filter = ["One Piece", "ReLIFE", "Bleach", "Kimetsu no Yaiba", "Tokyo卍Revengers", "Dr. Stone", "Shingeki no Kyojin", "Naruto", "Horimiya", "Nisekoi", "Tokyo Ghoul", "The Horizon", "The Breaker – New Waves", "The Breaker", "Bastard", "Solo Leveling", "Her Summon", "Looking for a Father", "Skill of Lure", "Medical Return", "I Am the Sorcerer King", "The Wife Contract and My Daughter’s Nanny", "She May Not Be Cute"]
-
-    try {
-        const deletedKomikList = await komikListModel.deleteMany({ title: { $nin: filter } })
-        const deletedKomikDetail = await komikDetailsModel.deleteMany({ title: { $nin: filter } })
-        res.status(200).send({
-            message: `Deleted ${deletedKomikList.deletedCount + deletedKomikDetail.deletedCount} documents successfully.`,
-        })
-    } catch (error) {
-        res.status(500).send({
-            message: "Failed to delete documents",
-            error: error
-        })
-    }
-})
-
 route.get('*', (req, res) => {
     res.send({
-        documentation: 'https://github.com/RizkyFauziIlmi/komikindo-api',
+        documentation: 'https://github.com/RizkyFauziIlmi/Manga-API',
         endpoint: {
             getAllKomikList: "/komik-list",
             getKomikDetail: "/komik-detail/:endpoint?",

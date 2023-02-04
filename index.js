@@ -3,6 +3,8 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import mongoose from 'mongoose'
 import komikRoute from './routes/komikRoute.js'
+import adminRoute from './routes/adminRoute.js'
+import adminMiddleware from './middleware/admin.js'
 
 const app = express()
 dotenv.config()
@@ -19,6 +21,7 @@ mongoose.connect(DB_CONNECTION, {
 })
 
 app.use(express.json())
+app.use('/admin', adminMiddleware, adminRoute)
 app.use(komikRoute)
 
 
