@@ -41,7 +41,11 @@ route.get('/komik-detail/:endpoint?', async (req, res) => {
                 komikDetail = await komikDetailsModel.find({ endpoint: { $eq: endpoint } })
             }
         } else {
-            komikDetail = await komikDetailsModel.aggregate(pipeline)
+            if (pipeline.length !== 0) {
+                komikDetail = await komikDetailsModel.aggregate(pipeline)         
+            } else {
+                komikDetail = await komikDetailsModel.find({})
+            }
         }
 
         res.status(200).json(komikDetail)
