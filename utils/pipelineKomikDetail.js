@@ -15,7 +15,7 @@ const makePipelineKomikDetail = (req, res) => {
         const genreQuery = req.query.genre.split(',');
         pipeline.push({
             $match: {
-                'genre.genre_title': { $all: genreQuery },
+                'genre.genre_ref': { $all: genreQuery },
             },
         });
     }
