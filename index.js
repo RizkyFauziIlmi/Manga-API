@@ -5,6 +5,7 @@ import mongoose from 'mongoose'
 import komikRoute from './routes/komikRoute.js'
 import adminRoute from './routes/adminRoute.js'
 import adminMiddleware from './middleware/admin.js'
+import { apiLimiter } from './middleware/apiLimiter.js'
 
 const app = express()
 dotenv.config()
@@ -21,6 +22,7 @@ mongoose.connect(DB_CONNECTION, {
 })
 
 app.use(express.json())
+app.use(apiLimiter)
 app.use('/admin', adminMiddleware, adminRoute)
 app.use(komikRoute)
 
